@@ -13,15 +13,62 @@ import ShareModal from './ShareModal';
 import { useAuth } from '@/components/auth/AuthProvider';
 import LogoutButton from '@/components/auth/LogoutButton';
 import Link from 'next/link';
+import { AIAssistant } from './ai/AIAssistant';
+import { useLexicalComposerContext } from '@lexical/react/useLexicalComposerContext';
+import { VersionHistory } from './version/VersionHistory';
+import { VersionComparison } from './version/VersionComparison';
+import { useState } from 'react';
 
 const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: CollaborativeRoomProps) => {
   const { user } = useAuth();
   const [documentTitle, setDocumentTitle] = useState(roomMetadata.title);
   const [editing, setEditing] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [documentContent, setDocumentContent] = useState('');
+  const [comparisonVersions, setComparisonVersions] = useState<{v1: number, v2: number} | null>(null);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleApplySuggestion = (suggestion: string) => {
+    // This will be handled by the Lexical editor plugin
+    console.log('Applying suggestion:', suggestion);
+  };
+
+  const handleImproveFormatting = (improvedContent: string) => {
+    // This will be handled by the Lexical editor plugin
+    console.log('Improving formatting:', improvedContent);
+  };
+
+  const handleUpdateTitle = (title: string) => {
+    setDocumentTitle(title);
+    updateDocument(roomId, title);
+  };
+
+  const handleRestoreVersion = async (version: number) => {
+    try {
+      const response = await fetch(`/api/versions/${roomId}/restore`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ version })
+      });
+      
+      if (response.ok) {
+        // Reload the page to show restored content
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error('Error restoring version:', error);
+    }
+  };
+
+  const handleCompareVersions = (v1: number, v2: number) => {
+    setComparisonVersions({ v1, v2 });
+  };
+
+  const handleCloseComparison = () => {
+    setComparisonVersions(null);
+  };
 
   const updateTitleHandler = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if(e.key === 'Enter') {
@@ -123,6 +170,25 @@ const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: Col
             </div>
           </Header>
         <Editor roomId={roomId} currentUserType={currentUserType} />
+        <AIAssistant 
+          content={documentContent}
+          onApplySuggestion={handleApplySuggestion}
+          onImproveFormatting={handleImproveFormatting}
+          onUpdateTitle={handleUpdateTitle}
+        />
+        <VersionHistory 
+          roomId={roomId}
+          onRestoreVersion={handleRestoreVersion}
+          onCompareVersions={handleCompareVersions}
+        />
+        {comparisonVersions && (
+          <VersionComparison
+            roomId={roomId}
+            version1={comparisonVersions.v1}
+            version2={comparisonVersions.v2}
+            onClose={handleCloseComparison}
+          />
+        )}
         </div>
       </ClientSideSuspense>
     </RoomProvider>
