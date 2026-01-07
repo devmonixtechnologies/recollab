@@ -1,3 +1,5 @@
+import { UserType } from '@/types/auth';
+
 'use client';
 
 import Theme from './plugins/Theme';

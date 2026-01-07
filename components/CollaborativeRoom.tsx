@@ -14,10 +14,16 @@ import { useAuth } from '@/components/auth/AuthProvider';
 import LogoutButton from '@/components/auth/LogoutButton';
 import Link from 'next/link';
 import { AIAssistant } from './ai/AIAssistant';
-import { useLexicalComposerContext } from '@lexical/react/useLexicalComposerContext';
 import { VersionHistory } from './version/VersionHistory';
 import { VersionComparison } from './version/VersionComparison';
-import { useState } from 'react';
+import { UserType } from '@/types/auth';
+
+interface CollaborativeRoomProps {
+  roomId: string;
+  roomMetadata: any;
+  users: any[];
+  currentUserType: UserType;
+}
 
 const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: CollaborativeRoomProps) => {
   const { user } = useAuth();

@@ -1,5 +1,3 @@
-import { createClient } from '@supabase/supabase-js';
-
 // AI Service for document enhancement features
 export class AIService {
   private apiKey: string;
@@ -73,7 +71,7 @@ export class AIService {
       });
 
       const data = await response.json();
-      const suggestions = data.choices[0]?.message?.content?.split('\n').filter(s => s.trim()) || [];
+      const suggestions = data.choices[0]?.message?.content?.split('\n').filter((s: string) => s.trim()) || [];
       return suggestions.slice(0, 4);
     } catch (error) {
       console.error('Error generating suggestions:', error);
@@ -115,8 +113,8 @@ export class AIService {
       
       // Parse the response to extract improved content and suggestions
       const lines = result.split('\n');
-      const improvedContent = lines.filter(line => !line.startsWith('Suggestion:')).join('\n');
-      const suggestions = lines.filter(line => line.startsWith('Suggestion:')).map(s => s.replace('Suggestion:', '').trim());
+      const improvedContent = lines.filter((line: string) => !line.startsWith('Suggestion:')).join('\n');
+      const suggestions = lines.filter((line: string) => line.startsWith('Suggestion:')).map((s: string) => s.replace('Suggestion:', '').trim());
 
       return {
         improvedContent,
@@ -165,7 +163,7 @@ export class AIService {
       });
 
       const data = await response.json();
-      const titles = data.choices[0]?.message?.content?.split('\n').filter(t => t.trim()) || [];
+      const titles = data.choices[0]?.message?.content?.split('\n').filter((t: string) => t.trim()) || [];
       return titles.slice(0, 5);
     } catch (error) {
       console.error('Error generating title suggestions:', error);

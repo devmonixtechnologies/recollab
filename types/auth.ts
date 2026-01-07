@@ -5,3 +5,5 @@ export type AuthUser = {
   avatarUrl?: string;
   color: string;
 };
+
+export type UserType = 'editor' | 'viewer';

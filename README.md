@@ -1,6 +1,6 @@
-# Recollab v2 · Advanced Collaborative Live Docs
+# Recollab v3 · Next-Generation Collaborative Live Docs
 
-Recollab v2 is an enhanced Next.js 14 + TypeScript collaborative document platform that builds upon the solid foundation of v1 with powerful new AI capabilities, version history, and document templates. It combines a Lexical-based editor, Liveblocks real-time presence/storage, and a custom MongoDB-backed authentication system to provide teams with an intelligent, responsive workspace for ideation and documentation.
+Recollab v3 represents a significant leap forward in collaborative document editing, building upon the solid foundation of v2 with cutting-edge AI capabilities, enhanced real-time collaboration, advanced performance optimizations, and enterprise-grade security features. This version combines a Lexical-based editor, Liveblocks real-time presence/storage, and a custom MongoDB-backed authentication system to provide teams with an intelligent, responsive, and secure workspace for ideation and documentation.
 
 
 ## 📚 Table of Contents
@@ -26,16 +26,16 @@ Recollab v2 is an enhanced Next.js 14 + TypeScript collaborative document platfo
 
 ---
 
-## ✨ Highlights
+## ✨ V3 Highlights
 
-- **🤖 AI-Powered Features:** Intelligent document summarization, content suggestions, smart formatting, and title generation powered by OpenAI.
-- **📚 Version History:** Complete document version tracking with diff viewer, restore functionality, and change analytics.
-- **📋 Document Templates:** Professional templates for meeting notes, project specs, SWOT analysis, research papers, and blog posts.
-- **🔄 Real-time Collaboration:** Low-latency multiplayer editing powered by Liveblocks, complete with cursors, presence, and shared storage.
-- **🔐 Custom Auth Layer:** Email + password flow with secure session cookies, bcrypt hashing, and MongoDB session persistence.
-- **📝 Lexical Editor:** Rich text formatting with extensible nodes, slash commands, collaborative cursors, and comment anchors.
-- **👥 Team Productivity:** Share modals, commenter/reader/editor roles, and collaborative indicators keep everyone aligned.
-- **🎨 Modern DX:** Type-safe APIs, organized server actions, and directory routing streamline feature development.
+- **🤖 Advanced AI Integration:** Real-time auto-completion, smart formatting suggestions, contextual content assistance, and intelligent title generation powered by OpenAI GPT-3.5 Turbo with confidence scoring.
+- **� Performance Optimizations:** Virtual scrolling for large documents, debounced AI requests, memoized components, and comprehensive performance monitoring with metrics collection.
+- **� Enterprise Security:** Enhanced session management, CSRF protection, rate limiting, input sanitization, password strength validation, and comprehensive audit logging.
+- **� Enhanced Collaboration:** Live presence indicators with user avatars, real-time cursor tracking, advanced user search, and improved mention suggestions.
+- **🎨 Modern UI/UX:** Framer Motion animations, toast notifications, advanced search with filters, responsive design, and accessibility improvements.
+- **🧪 Comprehensive Testing:** Jest testing suite with 70% coverage threshold, component testing, and mock implementations for all external services.
+- **� Version History:** Complete document version tracking with visual diff viewer, restore functionality, and change analytics (enhanced from v2).
+- **📋 Document Templates:** Professional templates with variable substitution and smart defaults (enhanced from v2).
 
 ---
 
@@ -43,12 +43,13 @@ Recollab v2 is an enhanced Next.js 14 + TypeScript collaborative document platfo
 
 | Screen | Description |
 | --- | --- |
-| Home | Welcome screen showing user details, quick document actions, and template selection. |
-| Document Workspace | Primary collaborative editor with AI assistant, version history, presence avatars, and share controls. |
-| AI Assistant | Floating panel providing document summarization, content suggestions, and smart formatting. |
-| Version History | Interactive timeline showing document versions with diff viewer and restore functionality. |
+| Home | Welcome dashboard with user details, quick document actions, template selection, and activity feed. |
+| Document Workspace | Primary collaborative editor with advanced AI assistant, version history, live presence indicators, and enhanced share controls. |
+| AI Smart Assistant | Floating panel providing real-time auto-completion, content suggestions, smart formatting, and title generation with confidence scoring. |
+| Advanced Search | Powerful document discovery with search, filters, tags, date ranges, and sorting options. |
+| Version History | Interactive timeline showing document versions with visual diff viewer and restore functionality. |
 | Template Selector | Modal for browsing and selecting from various document templates with variable customization. |
-| Authentication | Custom sign-in and sign-up pages using server actions and progressive form feedback. |
+| Authentication | Enhanced sign-in and sign-up pages with improved validation, security features, and progressive form feedback. |
 
 ---
 
@@ -121,52 +122,73 @@ recollab/
 
 ---
 
-## 🆕 What's New in V2
+## 🆕 What's New in V3
 
-### 🤖 AI-Powered Features
-- **Document Summarization:** Generate concise summaries of your documents using OpenAI GPT-3.5 Turbo
-- **Content Suggestions:** Get intelligent text completions and writing suggestions based on context
-- **Smart Formatting:** AI-powered document structure improvements and readability enhancements
-- **Title Generation:** Automatically generate relevant and engaging titles for your documents
+### 🤖 Advanced AI Features
+- **Real-time Auto-completion:** Context-aware text suggestions as you type with keyboard navigation.
+- **Smart Formatting Assistant:** AI-powered document structure improvements with confidence scoring.
+- **Enhanced Content Suggestions:** More intelligent and contextually relevant writing suggestions.
+- **Interactive AI Panel:** Tabbed interface for different AI features with minimize/maximize functionality.
+- **Confidence Scoring:** Visual indicators for AI suggestion confidence levels.
 
-### 📚 Version History System
-- **Automatic Snapshots:** Documents are automatically versioned when significant changes are made
-- **Visual Diff Viewer:** Compare any two versions with side-by-side diff highlighting
-- **Restore Functionality:** Restore any previous version with a single click
-- **Change Analytics:** Track who made what changes and when
-- **Content Hashing:** Efficient change detection prevents duplicate versions
+### 🚀 Performance & Scalability
+- **Virtual Scrolling:** Efficient rendering of large documents and lists.
+- **Debounced AI Requests:** Optimized API calls to reduce costs and improve responsiveness.
+- **Component Memoization:** Intelligent re-rendering optimization for better performance.
+- **Performance Monitoring:** Built-in metrics collection and performance tracking.
+- **Lazy Loading:** On-demand loading of components and data.
 
-### 📋 Document Templates
-- **Professional Templates:** Choose from meeting notes, project specifications, SWOT analysis, research papers, and blog posts
-- **Variable Substitution:** Customize templates with your specific information
-- **Smart Defaults:** Pre-populated fields with common business and academic formats
-- **Template Categories:** Organized by business, personal, academic, technical, and creative use cases
-- **Search & Filter:** Find the perfect template quickly with search and category filtering
+### 🔒 Enhanced Security
+- **Advanced Session Management:** Secure token handling with absolute and inactivity timeouts.
+- **CSRF Protection:** Cross-site request forgery prevention with token validation.
+- **Rate Limiting:** Configurable API rate limiting with custom implementation.
+- **Input Sanitization:** Comprehensive input validation and XSS prevention.
+- **Password Strength Validation:** Advanced password requirements with visual feedback.
+- **Security Audit Logging:** Comprehensive security event tracking and monitoring.
+- **Content Security Policy:** Enhanced CSP headers for improved browser security.
 
-### 🎨 Enhanced UI/UX
-- **Modern Component Library:** Expanded ShadCN components with cards, badges, and enhanced modals
-- **Improved Navigation:** Better organization of features and intuitive user flows
-- **Responsive Design:** Optimized for desktop, tablet, and mobile experiences
-- **Accessibility Improvements**: Better keyboard navigation and screen reader support
+### 👥 Enhanced Collaboration
+- **Live Presence Indicators:** Real-time user avatars with activity status and editing indicators.
+- **Advanced User Search:** Improved user discovery with search, filtering, and pagination.
+- **Enhanced Mentions:** Better mention suggestions with user avatars and status.
+- **Real-time Activity Feed:** Live updates of user actions and document changes.
+
+### 🎨 Modern UI/UX
+- **Framer Motion Animations:** Smooth, performant animations throughout the application.
+- **Toast Notifications:** Non-intrusive notification system with multiple types and actions.
+- **Advanced Search Interface:** Powerful document discovery with multiple filter options.
+- **Responsive Design:** Optimized for desktop, tablet, and mobile experiences.
+- **Accessibility Improvements:** Better keyboard navigation and screen reader support.
+
+### 🧪 Testing & Quality
+- **Comprehensive Test Suite:** Jest-based testing with 70% coverage threshold.
+- **Component Testing:** Isolated component testing with mocked dependencies.
+- **Performance Testing:** Built-in performance monitoring and metrics collection.
+- **Security Testing:** Input validation and security feature testing.
 
 ---
 
 ## 📦 Core Features
 
-### V2 Enhancements
-1. **🤖 AI-Powered Assistant** – Document summarization, content suggestions, smart formatting, and title generation using OpenAI.
-2. **📚 Version History** – Complete document version tracking with diff viewer, restore functionality, and change analytics.
-3. **📋 Document Templates** – Professional templates for meeting notes, project specs, SWOT analysis, research papers, and blog posts with variable substitution.
+### V3 Enhancements
+1. **🤖 Advanced AI Assistant** – Real-time auto-completion, smart formatting, contextual suggestions, and confidence scoring.
+2. **🚀 Performance Suite** – Virtual scrolling, debounced requests, memoized components, and performance monitoring.
+3. **🔒 Security Framework** – Enhanced session management, CSRF protection, rate limiting, and audit logging.
+4. **👥 Enhanced Collaboration** – Live presence indicators, advanced user search, and real-time activity feeds.
+5. **🎨 Modern UI/UX** – Framer Motion animations, toast notifications, and advanced search interface.
+6. **🧪 Testing Infrastructure** – Comprehensive Jest suite with 70% coverage and component testing.
 
-### Original Features
-4. **Secure Custom Authentication** – register, login, logout with hashed passwords and HTTP-only cookies.
-5. **Session Management** – MongoDB-backed sessions with automatic expiry and cookie cleanup.
-6. **Collaborative Editing** – Lexical editor combined with Liveblocks room storage for co-authoring.
-7. **Presence & Cursors** – See who is active, view color-coded cursors, and mention teammates.
-8. **Document Sharing Controls** – Invite collaborators, manage edit/view access, and list room members.
-9. **Live Document List** – Explore, open, and manage documents tied to the authenticated user.
-10. **Responsive UI** – Tailwind-based layout optimized for both desktop and mobile editing experiences.
-11. **Server Actions** – Form submissions backed by server actions for auth and room operations.
+### V2 Features (Enhanced)
+7. **📚 Version History** – Complete document version tracking with diff viewer, restore functionality, and change analytics.
+8. **📋 Document Templates** – Professional templates for meeting notes, project specs, SWOT analysis, research papers, and blog posts with variable substitution.
+9. **🔐 Secure Custom Authentication** – register, login, logout with hashed passwords and HTTP-only cookies.
+10. **Session Management** – MongoDB-backed sessions with automatic expiry and cookie cleanup.
+11. **Collaborative Editing** – Lexical editor combined with Liveblocks room storage for co-authoring.
+12. **Presence & Cursors** – See who is active, view color-coded cursors, and mention teammates.
+13. **Document Sharing Controls** – Invite collaborators, manage edit/view access, and list room members.
+14. **Live Document List** – Explore, open, and manage documents tied to the authenticated user.
+15. **Responsive UI** – Tailwind-based layout optimized for both desktop and mobile editing experiences.
+16. **Server Actions** – Form submissions backed by server actions for auth and room operations.
 
 ---
 
@@ -174,18 +196,26 @@ recollab/
 
 These are aspirational items the team may tackle next. Prioritize per roadmap needs.
 
-- Role-based access control with policy-driven permissions.
-- Expiring and password-protected share links.
-- Enhanced collaboration with real-time cursors and selections.
-- Document analytics and usage insights.
-- Rich media support: image uploads, embeds, and file attachments.
-- Comprehensive search functionality across documents and content.
-- Dark mode and theme customization.
-- Export functionality (PDF, Markdown, Word).
-- Workflow webhooks for Zapier/Make integrations.
-- Infrastructure-as-Code support (Terraform modules) for one-click deployments.
-- Playwright end-to-end regression suite.
-- Storybook catalog for UI documentation and visual regression.
+### High Priority
+- Real-time cursor selections and text highlighting
+- Document analytics and usage insights dashboard
+- Rich media support: image uploads, embeds, and file attachments
+- Comprehensive search functionality across documents and content
+- Dark mode and theme customization
+
+### Medium Priority
+- Export functionality (PDF, Markdown, Word)
+- Workflow webhooks for Zapier/Make integrations
+- Infrastructure-as-Code support (Terraform modules) for one-click deployments
+- Advanced permission system with role-based access control
+- Expiring and password-protected share links
+
+### Low Priority
+- Playwright end-to-end regression suite
+- Storybook catalog for UI documentation and visual regression
+- Mobile app development (React Native)
+- Advanced AI features (document translation, sentiment analysis)
+- Integration with popular third-party services (Google Docs, Notion, etc.)
 
 ---
 
@@ -308,15 +338,22 @@ Managed by Liveblocks storage; metadata (title, creator, access map) is stored i
 | `npm run build` | Create an optimized production build. |
 | `npm run start` | Run the production build locally. |
 | `npm run lint` | Execute ESLint using Next.js config. |
+| `npm run test` | Run Jest test suite. |
+| `npm run test:watch` | Run Jest tests in watch mode. |
+| `npm run test:coverage` | Run Jest tests with coverage report. |
 
 ---
 
 ## ✅ Testing & Quality
 
-- **Unit/Integration Testing:** (Planned) Add Vitest/Jest suites covering auth flows and utility functions.
+- **Unit/Integration Testing:** Jest-based testing suite with 70% coverage threshold.
+- **Component Testing:** Isolated component testing with mocked dependencies using React Testing Library.
+- **Performance Testing:** Built-in performance monitoring and metrics collection.
+- **Security Testing:** Input validation, CSRF protection, and security feature testing.
 - **E2E Testing:** (Planned) Use Playwright for multi-user collaboration scenarios.
 - **Type Safety:** TypeScript enforces contracts across server actions, components, and models.
 - **Linting:** Run `npm run lint` to catch common pitfalls and maintain standards.
+- **Coverage Reports:** Run `npm run test:coverage` to generate detailed coverage reports.
 
 ---
 
